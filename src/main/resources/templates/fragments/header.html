@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Header template</title>
+    </head>
+    <body>
+
+        <header th:fragment="header">
+            <a th:href="@{/form}">Sign up</a> &nbsp;
+            <a th:href="@{/login}">Log in</a> &nbsp;
+            <a th:href="@{/search}">Search</a> &nbsp;
+            <a th:href="@{/contest}">Logo contest</a> &nbsp;
+        </header>
+    </body>
+</html>
