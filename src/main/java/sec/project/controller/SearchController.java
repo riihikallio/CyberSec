@@ -10,6 +10,7 @@ import sec.project.repository.SignupRepository;
 import java.sql.*;
 import java.util.*;
 import org.springframework.ui.Model;
+import sec.project.util.CurrentUser;
 
 @Controller
 public class SearchController {
@@ -18,7 +19,9 @@ public class SearchController {
     private SignupRepository signupRepository;
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String loadForm() {
+    public String loadForm(Model model) {
+        String user = CurrentUser.name();
+        model.addAttribute("user", user);
         return "search";
     }
 
@@ -37,9 +40,10 @@ public class SearchController {
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage() + " " + ex);
             }
-//            model.addAttribute("result", true);
             model.addAttribute("buddies", buddies);
         }
+        String user = CurrentUser.name();
+        model.addAttribute("user", user);
         return "search";
     }
 

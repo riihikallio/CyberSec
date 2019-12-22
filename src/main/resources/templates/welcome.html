@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Thank you!</title>
+        <title>Welcome</title>
     </head>
     <body>
         <header th:replace="fragments/header :: header">
             <p>header with links etc</p>
         </header>
-        <h1>Thank you! You have been signed up to the event!</h1>
+        <h1>Welcome <span th:text="${user}">name</span>!</h1>
 
+        <p>You can check if your buddies have signed up or attend our logo contest.</p>
     </body>
 </html>

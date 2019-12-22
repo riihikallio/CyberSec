@@ -19,11 +19,13 @@
             <p><input type="submit" value="Submit" /></p>
         </form>
 
-        <div th:if="${logos}">
+        <div th:if="${logos.size()>0}">
             <h4>Current submissions:</h4>
             <ul>
                 <li th:each="logo : ${logos}">
-                    <span th:text="by ${logo}">buddy</span>
+                    <a th:href="@{/logo/{id} (id=${logo.id})}">
+                        by <span th:text="${logo.name}">buddy</span>
+                    </a>
                 </li>
             </ul>
         </div>

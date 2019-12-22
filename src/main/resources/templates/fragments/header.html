@@ -7,10 +7,10 @@
     <body>
 
         <header th:fragment="header">
-            <a th:href="@{/form}">Sign up</a> &nbsp;
-            <a th:href="@{/login}">Log in</a> &nbsp;
             <a th:href="@{/search}">Search</a> &nbsp;
             <a th:href="@{/contest}">Logo contest</a> &nbsp;
+            <span th:if="${user==null}"><a th:href="@{/login}">Log in</a> &nbsp;</span>
+            <span th:if="${user!=null}"><a th:href="@{/logout}">Log out <span th:text="${user}">user</span></a> &nbsp;</span>
         </header>
     </body>
 </html>

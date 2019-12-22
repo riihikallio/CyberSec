@@ -8,8 +8,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import sec.project.util.PlaintextEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -25,12 +25,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/h2-console/*").permitAll()
+                .antMatchers("/contest*").authenticated()
                 .anyRequest().permitAll();
-        //        .anyRequest().authenticated();
         http.formLogin()
                 .permitAll();
-        http.authorizeRequests()
-                .anyRequest().permitAll();
+        http.logout()
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true)
+                .permitAll();
     }
 
     @Autowired
@@ -40,6 +42,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new PlaintextEncoder();
     }
 }

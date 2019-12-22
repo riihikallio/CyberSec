@@ -20,7 +20,7 @@ public class Signup extends AbstractPersistable<Long> {
         this.name = name;
         this.address = address;
         this.passwd = passwd;
-        this.logo = "";
+        this.logo = null;
     }
 
     public String getName() {

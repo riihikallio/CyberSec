@@ -4,17 +4,30 @@
         <title>Sign up form</title>
     </head>
     <body>
-        <header th:replace="fragments/header :: header">
-            <p>header with links etc</p>
+        <header>
+            <a th:href="@{/form}">Sign up</a> &nbsp;
+            <a th:href="@{/login}">Log in</a> &nbsp;
         </header>
         <h1>Sign up to the event using this form</h1>
 
         <form action="#" th:action="@{/form}" method="POST">
-            <p><label for="name">Name</label>: <input type="text" name="name" id="name"/></p>
-            <p><label for="address">Address</label>: <input type="text" name="address" id="address"/></p>
-            <p><label for="passwd">Password</label>: <input type="password" name="passwd" id="passwd"/></p>
-            <p><input type="submit" value="Submit" /></p>
+            <p><label for="name">Name</label>: <input type="text" name="name" id="name" /></p>
+            <p><label for="address">Address</label>: <input type="text" name="address" id="address" /></p>
+            <p><label for="passwd">Password</label>: <input type="password" name="passwd" id="passwd" onkeyup="test()"/>
+            (at least 3 characters)</p>
+            <p><input type="submit" value="Submit" id="submit" disabled="true" /></p>
         </form>
-        <p></p>
+        <script>
+            function test() {
+                let passwd = document.querySelector('#passwd');
+                let button = document.querySelector('#submit');
+                console.log(passwd.value);
+                if (passwd.value.length > 2) {
+                    button.removeAttribute("disabled");
+                }else {
+                    button.setAttribute("disabled", null);
+                }
+            }
+        </script>
     </body>
 </html>
