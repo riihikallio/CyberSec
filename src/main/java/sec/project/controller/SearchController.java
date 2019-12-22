@@ -30,16 +30,16 @@ public class SearchController {
             try {
                 Connection con = DriverManager.getConnection(url, "sa", "");
                 Statement stm = con.createStatement();
-                ResultSet rs = stm.executeQuery("SELECT name, address FROM SignUp WHERE name LIKE '%" + name + "%'");
+                ResultSet rs = stm.executeQuery("SELECT name, address FROM SignUp WHERE LOWER(name) LIKE '%" + name.toLowerCase() + "%'");
                 while (rs.next()) {
                     buddies.add(rs.getString(1) + " (" + rs.getString(2) + ")");
                 }
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage() + " " + ex);
             }
+//            model.addAttribute("result", true);
+            model.addAttribute("buddies", buddies);
         }
-        model.addAttribute("result", true);
-        model.addAttribute("buddies", buddies);
         return "search";
     }
 
