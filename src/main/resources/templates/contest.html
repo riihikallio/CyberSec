@@ -10,21 +10,22 @@
         <h1>Logo contest</h1>
 
         <p>Submit your SVG logo to the contest. The winner will be announced at the end of the event.</p>
-        <p>Only one submission per participant. A new submission will replace your previous one.</p>
-        
+
         <form action="#" th:action="@{/contest}" method="POST">
-            <p><label for="logo">Logo</label>: <input type="textarea" name="logo" id="logo" 
-                value="<circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;green&quot; stroke-width=&quot;4&quot; fill=&quot;yellow&quot; />"/></p>
+            <p><label for="logo">SVG code:</label><br />
+                <textarea name="logo" id="logo" rows="10" cols="50">&lt;circle cx=&quot;50&quot; cy=&quot;50&quot; r=&quot;40&quot; stroke=&quot;green&quot; stroke-width=&quot;4&quot; fill=&quot;yellow&quot; /&gt;</textarea>
+            </p>
+            <p>Only one submission per participant. A new submission will replace your previous one.</p>
             <p><input type="submit" value="Submit" /></p>
         </form>
 
         <div th:if="${logos}">
-        <h4>Current submissions:</h4>
-        <ul>
-            <li th:each="logo : ${logos}">
-                <span th:text="by ${logo}">buddy</span>
-            </li>
-        </ul>
+            <h4>Current submissions:</h4>
+            <ul>
+                <li th:each="logo : ${logos}">
+                    <span th:text="by ${logo}">buddy</span>
+                </li>
+            </ul>
         </div>
     </body>
 </html>

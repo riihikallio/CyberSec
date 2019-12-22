@@ -9,6 +9,7 @@ public class Signup extends AbstractPersistable<Long> {
     private String name;
     private String address;
     private String passwd;
+    private String logo;
 
     public Signup() {
         super();
@@ -19,6 +20,7 @@ public class Signup extends AbstractPersistable<Long> {
         this.name = name;
         this.address = address;
         this.passwd = passwd;
+        this.logo = "";
     }
 
     public String getName() {
@@ -43,6 +45,14 @@ public class Signup extends AbstractPersistable<Long> {
 
     public void setPasswd(String passwd) {
         this.passwd = passwd;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
     }
 
 }

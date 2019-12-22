@@ -14,12 +14,16 @@
             <p><input type="submit" value="Search" /></p>
         </form>
 
-        <p if="${buddies.size()==0}">Looks like your buddy hasn't signed up, yet</p>
-
-        <ul th:if="${buddies}">
-            <li th:each="buddy : ${buddies}">
-                <span th:text="${buddy}">buddy</span>
-            </li>
-        </ul>
+        <div th:if="${result}">
+            <p th:if="${buddies.size()==0}">Looks like your buddy hasn't signed up, yet</p>
+            <div th:if="${buddies.size()>0}">
+                <h4>Found these:</h4>
+                <ul>
+                    <li th:each="buddy : ${buddies}">
+                        <span th:text="${buddy}">buddy</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
