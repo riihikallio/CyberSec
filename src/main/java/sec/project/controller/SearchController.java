@@ -38,7 +38,7 @@ public class SearchController {
                 System.out.println(ex.getMessage() + " " + ex);
             }
         }
-
+        model.addAttribute("result", true);
         model.addAttribute("buddies", buddies);
         return "search";
     }
