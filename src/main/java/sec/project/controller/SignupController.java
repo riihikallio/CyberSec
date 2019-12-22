@@ -38,6 +38,9 @@ public class SignupController {
     @RequestMapping(value = "/form", method = RequestMethod.POST)
     public String submitForm(Model model, @RequestParam String name, @RequestParam String address, @RequestParam String passwd,
             HttpServletRequest request) {
+        if (name.length() == 0 || address.length() == 0 || passwd.length() == 0) {
+            return "redirect:/form";
+        }
         signupRepository.save(new Signup(name, address, passwd));
 
         try {
